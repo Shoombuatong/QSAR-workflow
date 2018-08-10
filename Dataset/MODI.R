@@ -46,20 +46,21 @@ class = as.numeric(Dat[,ncol(Dat)])
 d1 <- dist(AA, upper=TRUE, diag=TRUE, method = "euclidean")
 nd1 <- scale(d1)
 nd2 = ((nd1-min(nd1))/(max(nd1)-min(nd1)))
-MOBI <- matrix(nrow = nrow(Dat), ncol = 1)
+MODI <- matrix(nrow = nrow(Dat), ncol = 1)
 
 for (i in 1:nrow(Dat)){
-MOBI[i,] <- Dat[order(nd2[i,]),][2,n]
+MODI[i,] <- Dat[order(nd2[i,]),][2,n]
 }
 
-result = data.frame(class,MOBI)
+result = data.frame(class,MODI)
 X <- subset(result, result[,1] == '1')
 Y <- subset(result, result[,1] == '2')
 
 MODIclass = (table(X)[1]/nrow(X)+ table(Y)[2]/nrow(Y))/2
 
 ##### MODI > 0.65 
-############# MODI for classification task
+                         
+############# MODI for regression task
 feature <- read.csv("Model.csv", header = TRUE) 
 label <- read.csv("Koc.csv", header = TRUE) 
 Dat = data.frame(feature, label)
