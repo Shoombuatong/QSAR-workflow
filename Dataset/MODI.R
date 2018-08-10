@@ -26,7 +26,7 @@ x2<- read.fasta('nonAFP.fasta', seqtype="AA", as.string = TRUE)
 
 x1 <- x1[(sapply(x1, protcheck))]
 x2 <- x2[(sapply(x2, protcheck))]
-label = c(rep("AFP", length(x1)),rep("nonTHP", length(x2)))
+label = c(rep("AFP", length(x1)),rep("nonAFP", length(x2)))
 
 AAC1 <- t(sapply(x1, extractAAC))
 AAC2 <- t(sapply(x2, extractAAC))
